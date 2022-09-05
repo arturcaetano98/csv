@@ -1,0 +1,36 @@
+1) e 2)
+
+use testeingestao;
+
+create table marketing_banco(
+	idade int not null,
+	estadoCivil varchar(30) not null,
+	trabalho varchar(50) not null,
+	casa int not null,
+	emprestimo int not null,
+	campanha int not null,
+	contato varchar(50) not null);
+
+
+3 ) 
+load data local infile "/home/cloudera/Downloads/makt_banco.csv"
+into table marketing_banco fields terminated by "," lines terminated by "\n" ignore 1 lines;
+
+4 )
+sqoop import --connect jdbc:mysql://localhost:3306/testeingestao --username root --password cloudera --table marketing_banco -m 1
+
+
+5 )
+sqoop import -–connect jdbc:mysql://localhost:3306/testesingestao --username root --password cloudera –-target-dir testesqoop/marketing_banco_filtrado --columns “idade, trabalho, campanha, contato” -m 1
+
+
+6 ) e 7 ) 
+create table marketing_banco_filtrado(
+	idade int not null,
+	trabalho varchar(50) not null,
+	campanha int not null,
+	contato varchar(50) not null);
+
+8) ? 
+
+
