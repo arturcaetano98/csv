@@ -21,7 +21,9 @@ sqoop import --connect jdbc:mysql://localhost:3306/testeingestao --username root
 
 
 5 )
-sqoop import -–connect jdbc:mysql://localhost:3306/testesingestao --username root --password cloudera –-target-dir testesqoop/marketing_banco_filtrado --columns “idade, trabalho, campanha, contato” -m 1
+sqoop import -–connect jdbc:mysql://localhost:3306/testesingestao 
+--username root --password cloudera –-target-dir testesqoop/marketing_banco_filtrado 
+--columns “idade, trabalho, campanha, contato” -m 1
 
 
 6 ) e 7 ) 
@@ -31,6 +33,8 @@ create table marketing_banco_filtrado(
 	campanha int not null,
 	contato varchar(50) not null);
 
-8) ? 
+8)
+sqoop export -–connect jdbc:mysql://localhost:3306/testesingestao --username root --password cloudera
+--table marketing_banco_filtrado –-export-dir testesqoop/marketing_banco_filtrado2
 
 
