@@ -1,0 +1,31 @@
+1)
+create database jogos;
+
+2)
+create table video_game(
+	rank int,
+	name string,
+	platform string,
+	year int,
+	genre string,
+	publisher string,
+	na_sales float,
+	eu_sales float,
+	jp_sales float,
+	other_sales float,
+	global_sales float
+	) partitioned by (period string) row format delimited fields terminated by ',';
+
+3) BAIXADO
+
+4) load data local inpath 'arquivoshive/vgsales.csv' into table
+clientes2 partition (period='1980_2016');
+
+5)
+select * from video_game where rank <= 10
+
+6)
+select * from video_game where year > 2010
+
+7)
+select * from video_game where period="1980_2016" and platform == "Wii"
