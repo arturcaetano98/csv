@@ -2,6 +2,9 @@
 create database jogos;
 
 2)
+
+use jogos;
+
 create table video_game(
 	rank int,
 	name string,
@@ -18,14 +21,13 @@ create table video_game(
 
 3) BAIXADO
 
-4) load data local inpath 'arquivoshive/vgsales.csv' into table
-clientes2 partition (period='1980_2016');
+4) load data local inpath 'arquivoshive/vgsales.csv' into table video_game partition (period='1980_2016');
 
 5)
-select * from video_game where rank <= 10
+select * from video_game where rank <= 10;
 
 6)
-select * from video_game where year > 2010
+select * from video_game where year > 2010;
 
 7)
-select * from video_game where period="1980_2016" and platform == "Wii"
+select * from video_game where period="1980_2016" and platform == "Wii";
